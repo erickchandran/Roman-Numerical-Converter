@@ -1,0 +1,100 @@
+
+
+function convertToRoman(num) {
+  
+let x = num;
+let romanNum = [];
+x = [...x.toString()].reverse();
+let thous = x[3];
+let hunds = x[2];
+let tens = x[1];
+let units = x[0];
+////blok thausand
+if (thous !== undefined){
+for (let i=0; i<thous; i++) {
+	romanNum.push("M");
+	}
+} //else {romanNum.push("");}//nanti dicoba diilangin aja
+//// blok hundred
+if(hunds !== undefined){
+if (hunds == 5){
+romanNum.push("D")
+} 
+else if (hunds < 5) {
+if (hunds == 4){romanNum.push("CD")} else { 
+for (let j=0; j<hunds; j++) {
+romanNum.push("C");
+}
+}
+} else if (hunds > 5){
+if (hunds == 9){romanNum.push("CM")} else {
+let add = [];
+for (let l=0; l<hunds-5; l++) {
+add.push("C");
+} romanNum.push("D" + add )
+}
+}
+}// else {romanNum.push("");}//nanti dicoba diilangin aja
+////
+if (tens !== undefined) {
+if (tens == 5){
+romanNum.push("L");
+} else if(tens < 5){
+if (tens == 4){romanNum.push("XL")} else {
+for (let k=0; k<tens; k++){
+romanNum.push("X");
+}
+}
+} else if (tens > 5){
+if (tens == 9){romanNum.push("XC")} else {
+let add = [];
+for (let m=0; m<tens-5; m++) {
+add.push("X");
+} romanNum.push("L" + add )
+}
+}
+}//else {romanNum.push("");}//nanti dicoba diilangin aja
+////
+if (units !== undefined) {
+if (units == 5){
+romanNum.push("V");
+} else if(units < 5){
+if (units == 4){romanNum.push("IV")} else {
+for (let n=0; n<units; n++){
+romanNum.push("I");
+}
+}
+} else {
+if (units == 9){romanNum.push("IX")} else {
+let add = [];
+for (let p=0; p<units-5; p++) {
+add.push("I");
+} romanNum.push("V" + add )
+}
+}
+}//else {romanNum.push("");}//nanti dicoba diilangin aja
+ 
+//
+
+
+
+
+
+
+//console.log(thous+" "+hunds+" "+tens+" "+units)
+  //console.log(x)
+
+ return romanNum.join("").replace(/,/g, "");
+}
+
+console.log(convertToRoman(797));
+
+
+
+
+
+
+
+ 
+
+
